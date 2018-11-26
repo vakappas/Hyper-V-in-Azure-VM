@@ -7,7 +7,7 @@ Select-AzureRmSubscription -Subscription "vakappas - Internal Consumption"
 #Deploy VM to Azure using Template
 New-AzureRmResourceGroup -Name "WSLabRGInsider" -Location "West Europe"
 
-$TemplateUri="https://raw.githubusercontent.com/Microsoft/WSLab/master/Scenarios/Running%20WSLab%20in%20Azure/WSLabServerInsider.json"
+$TemplateUri="https://raw.githubusercontent.com/vakappas/Hyper-V-in-Azure-VM/master/Hyper-V-Azure-VM.json"
 
 New-AzureRmResourceGroupDeployment -Name WSLabInsider -ResourceGroupName WSLabRGInsider -TemplateUri $TemplateUri -Verbose
 
