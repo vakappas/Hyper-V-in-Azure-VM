@@ -5,11 +5,12 @@ Get-AzureRmSubscription
 Select-AzureRmSubscription -Subscription "vakappas - Internal Consumption"
 
 #Deploy VM to Azure using Template
-New-AzureRmResourceGroup -Name "WSLabRGInsider" -Location "West Europe"
+$ResourceGroup = "HVLab-RG"
+New-AzureRmResourceGroup -Name $ResourceGroup -Location "West Europe"
 
 $TemplateUri="https://raw.githubusercontent.com/vakappas/Hyper-V-in-Azure-VM/master/Hyper-V-Azure-VM.json"
 
-New-AzureRmResourceGroupDeployment -Name WSLabInsider -ResourceGroupName WSLabRGInsider -TemplateUri $TemplateUri -Verbose
+New-AzureRmResourceGroupDeployment -Name HVLab -ResourceGroupName $ResourceGroup -TemplateUri $TemplateUri -Verbose
 
 #connect to VM using RDP
 mstsc /v:((Get-AzureRmPublicIpAddress -ResourceGroupName WSLabRGInsider).IpAddress)
