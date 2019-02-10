@@ -12,5 +12,7 @@ $TemplateUri="https://raw.githubusercontent.com/vakappas/Hyper-V-in-Azure-VM/mas
 
 New-AzureRmResourceGroupDeployment -Name HVLab -ResourceGroupName $ResourceGroup -TemplateUri $TemplateUri -Verbose
 
+Remove-AzureRmResourceGroup -Name $ResourceGroup -Force
+
 #connect to VM using RDP
-mstsc /v:((Get-AzureRmPublicIpAddress -ResourceGroupName WSLabRGInsider).IpAddress)
+mstsc /v:((Get-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroup).IpAddress)
